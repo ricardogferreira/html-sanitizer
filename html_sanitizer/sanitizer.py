@@ -243,6 +243,7 @@ class Sanitizer(object):
             doc = soupparser.fromstring(html)
 
         lxml.html.clean.Cleaner(
+            embedded=False,
             remove_unknown_tags=False,
             # Remove style *tags*
             style=True,
@@ -384,6 +385,7 @@ class Sanitizer(object):
 
         # Run cleaner again, but this time with even more strict settings
         lxml.html.clean.Cleaner(
+            embedded=False,
             allow_tags=self.tags,
             remove_unknown_tags=False,
             safe_attrs_only=False,  # Our attributes allowlist is sufficient.
